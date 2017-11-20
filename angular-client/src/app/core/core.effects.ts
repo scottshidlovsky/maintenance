@@ -5,6 +5,7 @@ import {LOGIN, LoginSuccess} from "../auth/auth.actions";
 import {filter, map, mergeMap, tap} from "rxjs/operators";
 import {Action} from "@ngrx/store";
 import {Observable} from "rxjs/Observable";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AppEffects {
@@ -19,11 +20,14 @@ export class AppEffects {
                 return !!results.email;
             }),
             map((results: UserData) => {
+                this.router.navigate(['dashboard']);
                 return new LoginSuccess(results)
             })
         );
 
-    constructor(private actions$: Actions, private userApi: UserApi) {
+    constructor(private actions$: Actions,
+                private userApi: UserApi,
+                private router: Router) {
     }
 
 }

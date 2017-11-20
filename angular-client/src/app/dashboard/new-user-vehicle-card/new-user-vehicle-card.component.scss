@@ -1,0 +1,15 @@
+@import '../variables';
+
+:host {
+  box-shadow: $card-shadow;
+  background: #fff;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0,0,0,.05);
+  }
+}

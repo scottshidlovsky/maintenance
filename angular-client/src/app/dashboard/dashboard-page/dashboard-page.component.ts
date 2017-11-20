@@ -5,4 +5,8 @@ import {Component} from "@angular/core";
     templateUrl: './dashboard-page.component.html',
     styleUrls: ['./dashboard-page.component.scss']
 })
-export class DashboardPageComponent {}
+export class DashboardPageComponent {
+    addUserVehicle() {
+        // Navigate to add vehicle
+    }
+}

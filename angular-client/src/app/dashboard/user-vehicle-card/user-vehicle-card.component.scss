@@ -1,0 +1,9 @@
+@import '../variables';
+
+:host {
+  display: block;
+  background: #fff;
+  box-shadow: $card-shadow;
+  padding: 20px;
+  height: 100%;
+}

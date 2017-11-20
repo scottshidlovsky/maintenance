@@ -3,6 +3,11 @@ import {MatButtonModule, MatCardModule, MatGridListModule, MatIconModule} from "
 import {DashboardPageComponent} from "./dashboard-page/dashboard-page.component";
 import {RouterModule} from "@angular/router";
 import {GridModule} from "../shared/grid/grid.module";
+import {
+    UserVehicleCardComponent, UserVehicleCardNameComponent, UserVehicleCardDetailsComponent,
+    UserVehicleCardMileageComponent
+} from "./user-vehicle-card/user-vehicle-card.component";
+import {NewUserVehicleCardComponent} from "./new-user-vehicle-card/new-user-vehicle-card.component";
 
 @NgModule({
     imports: [
@@ -17,7 +22,12 @@ import {GridModule} from "../shared/grid/grid.module";
         DashboardPageComponent
     ],
     declarations: [
-        DashboardPageComponent
+        DashboardPageComponent,
+        UserVehicleCardComponent,
+        UserVehicleCardNameComponent,
+        UserVehicleCardDetailsComponent,
+        UserVehicleCardMileageComponent,
+        NewUserVehicleCardComponent,
     ]
 })
 export class DashboardModule {}

@@ -2,22 +2,14 @@
 <cm-container>
   <cm-row>
     <cm-col xs="4" md="2">
-    <mat-card>Add new vehicle...</mat-card>
+      <cm-new-user-vehicle-card (click)="addUserVehicle()"></cm-new-user-vehicle-card>
     </cm-col>
-    <cm-col xs="4" md="4">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title>Scott's Car</mat-card-title>
-          <mat-card-subtitle>Honda</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-icon-button><mat-icon>build</mat-icon></button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions>
-      </mat-card>
+    <cm-col xs="4">
+      <cm-user-vehicle-card>
+        <cm-user-vehicle-card-name>Scott's Car</cm-user-vehicle-card-name>
+        <cm-user-vehicle-card-details>2017 Honda Civic</cm-user-vehicle-card-details>
+        <cm-user-vehicle-card-mileage>100,562 Miles</cm-user-vehicle-card-mileage>
+      </cm-user-vehicle-card>
     </cm-col>
   </cm-row>
 </cm-container>
