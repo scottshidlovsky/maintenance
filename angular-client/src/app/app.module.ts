@@ -17,6 +17,7 @@ import {AppBarComponent} from "./core/app-bar.component";
 import {AppBarContainer} from "./core/app-bar.container";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {GridModule} from "./shared/grid/grid.module";
+import {VehicleModule} from "./vehicle/vehicle.module";
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import {GridModule} from "./shared/grid/grid.module";
         HttpClientModule,
         MatToolbarModule,
         MatButtonModule,
-        RouterModule.forRoot([]),
+        RouterModule.forRoot([
+            {path: 'vehicle', loadChildren: () => VehicleModule}
+        ]),
         StoreModule.forRoot({ router: routerReducer }),
 
         AuthModule,

@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'cm-dashboard-page',
@@ -6,7 +7,9 @@ import {Component} from "@angular/core";
     styleUrls: ['./dashboard-page.component.scss']
 })
 export class DashboardPageComponent {
+    constructor(private router: Router) {}
+
     addUserVehicle() {
-        // Navigate to add vehicle
+        this.router.navigate(['vehicle', 'add']);
     }
 }
