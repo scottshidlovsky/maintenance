@@ -1,0 +1,25 @@
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+spring:
+  datasource:
+    url:
+    username:
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+
+facebook:
+  client:
+    clientId:
+    clientSecret:
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me?fields=id,name,email,picture.type(small)
