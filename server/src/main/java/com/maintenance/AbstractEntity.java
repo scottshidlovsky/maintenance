@@ -17,7 +17,4 @@ public class AbstractEntity {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

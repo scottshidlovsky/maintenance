@@ -26,8 +26,6 @@ public class VehicleControllerTest {
     @MockBean
     VehicleRepo vehicleRepo;
 
-    @MockBean
-    ModelYearRepo modelYearRepo;
 
     @Test
     @WithMockUser
@@ -47,7 +45,7 @@ public class VehicleControllerTest {
     @Test
     @WithMockUser
     public void findAllVehicleModelByMake() throws Exception {
-        when(this.modelYearRepo.findModelByMake("honda")).thenReturn(Arrays.asList("Civic", "Accord"));
+//        when(this.modelYearRepo.findModelByMake("honda")).thenReturn(Arrays.asList("Civic", "Accord"));
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/vehicle/make/honda"))
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
