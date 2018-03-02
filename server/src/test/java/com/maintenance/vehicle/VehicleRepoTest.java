@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -74,6 +75,29 @@ public class VehicleRepoTest {
 
         years = this.repository.findAllYearByMakeAndModel("Honda", "Invalid");
         assertEquals(years.size(), 0);
+    }
+
+    /**
+     * Verify we get an optional with the correct vehicle
+     */
+    @Test
+    public void testFindVehicle() {
+        Optional<Vehicle> vehicle =  this.repository.findVehicle("Honda", "Civic", 2018);
+        assertTrue(vehicle.isPresent());
+        Vehicle actual = vehicle.get();
+        assertEquals(actual.getId(), new Integer(1));
+        assertEquals(actual.getMake(), "Honda");
+        assertEquals(actual.getModel(), "Civic");
+        assertEquals(actual.getYear(), 2018);
+    }
+
+    /**
+     * Verify we get an empty optional when no vehicle is found
+     */
+    @Test
+    public void testFindVehicleEmpty() {
+        Optional<Vehicle> vehicle = this.repository.findVehicle("Invalid", "Civic", 2019);
+        assertFalse(vehicle.isPresent());
     }
 
 }

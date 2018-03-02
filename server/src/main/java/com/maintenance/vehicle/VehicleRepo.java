@@ -5,6 +5,7 @@ import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Vehicles will be feed in so just need custom accessor data functions
@@ -33,4 +34,11 @@ public interface VehicleRepo extends Repository<Vehicle, Integer> {
      */
     @Query(value = "select distinct v.year from Vehicle v where v.make = :make and v.model = :model")
     List<Integer> findAllYearByMakeAndModel(@Param("make") String make, @Param("model") String model);
+
+    /**
+     * Retrieve full vehicle object based on its make, model, year
+     * @return vehicle if found otherwise empty optional
+     */
+    @Query(value = "select v from Vehicle v where v.make = :make and v.model = :model and v.year = :year")
+    Optional<Vehicle> findVehicle(@Param("make") String make, @Param("model") String model, @Param("year") int year);
 }
