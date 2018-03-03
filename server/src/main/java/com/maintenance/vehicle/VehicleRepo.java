@@ -41,4 +41,11 @@ public interface VehicleRepo extends Repository<Vehicle, Integer> {
      */
     @Query(value = "select v from Vehicle v where v.make = :make and v.model = :model and v.year = :year")
     Optional<Vehicle> findVehicle(@Param("make") String make, @Param("model") String model, @Param("year") int year);
+
+    /**
+     * Retrieve vehicle based on internal id
+     * @param id internal DB id
+     * @return vehicle if found otherwise empty optional
+     */
+    Optional<Vehicle> findOne(Integer id);
 }
