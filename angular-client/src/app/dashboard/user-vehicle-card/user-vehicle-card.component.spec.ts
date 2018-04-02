@@ -2,17 +2,17 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserVehicleCardComponent } from './user-vehicle-card.component';
 import { By } from '@angular/platform-browser';
 
-
 describe('UserVehicleCardComponent', () => {
   let component: UserVehicleCardComponent;
   let fixture: ComponentFixture<UserVehicleCardComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ UserVehicleCardComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [UserVehicleCardComponent]
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UserVehicleCardComponent);
@@ -42,7 +42,5 @@ describe('UserVehicleCardComponent', () => {
     fixture.detectChanges();
     const mileage = fixture.debugElement.query(By.css('.vehicle-mileage'));
     expect(mileage.nativeElement.textContent).toContain('1,000 Miles');
-  })
-
-
+  });
 });

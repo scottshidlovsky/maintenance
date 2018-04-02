@@ -14,9 +14,7 @@ const reducers = {
 };
 
 @NgModule({
-  imports: [
-    StoreModule.forFeature('auth', reducers)
-  ],
+  imports: [StoreModule.forFeature('auth', reducers)],
   declarations: [LoginComponent, FacebookBtnComponent],
   exports: [LoginComponent]
 })

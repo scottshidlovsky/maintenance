@@ -4,31 +4,25 @@ import { FormFieldControlDirective } from './form-field-control.directive';
 @Component({
   selector: 'cm-form-field',
   templateUrl: './form-field.component.html',
-  styleUrls: ['./form-field.component.scss'],
+  styleUrls: ['./form-field.component.scss']
 })
 export class FormFieldComponent implements OnInit, AfterContentInit {
+  @Input() required: boolean;
 
-  @Input()
-  required: boolean;
-
-  @Input()
-  label: string;
-
+  @Input() label: string;
 
   @ContentChild(FormFieldControlDirective) control: FormFieldControlDirective;
 
   errorMessages = [
-    {key: 'required', message: 'this is required'},
-    {key: 'minLength', message: 'this isn\'t long enough'}
+    { key: 'required', message: 'this is required' },
+    { key: 'minLength', message: "this isn't long enough" }
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterContentInit() {
-    console.log('control', this.control)
+    console.log('control', this.control);
   }
-
 }

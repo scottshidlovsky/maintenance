@@ -6,12 +6,13 @@ describe('CmFieldInputComponent', () => {
   let component: CmFieldInputComponent;
   let fixture: ComponentFixture<CmFieldInputComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CmFieldInputComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [CmFieldInputComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CmFieldInputComponent);

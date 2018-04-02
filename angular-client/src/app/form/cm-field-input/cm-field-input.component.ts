@@ -1,5 +1,12 @@
 import { Component, forwardRef, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validator, NG_VALIDATORS } from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+  Validator,
+  NG_VALIDATORS
+} from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
@@ -11,17 +18,16 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CmFieldInputComponent),
-      multi: true,
+      multi: true
     },
     {
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => CmFieldInputComponent),
-      multi: true,
+      multi: true
     }
   ]
 })
-export class CmFieldInputComponent implements ControlValueAccessor,Validator, OnDestroy {
-
+export class CmFieldInputComponent implements ControlValueAccessor, Validator, OnDestroy {
   internalControl = new FormControl();
   destroyed$ = new ReplaySubject<boolean>(1);
 
@@ -38,7 +44,7 @@ export class CmFieldInputComponent implements ControlValueAccessor,Validator, On
     this.internalControl.setValue(value);
   }
 
-  onChange = (value) => {};
+  onChange = value => {};
   onTouched = () => {};
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -48,9 +54,8 @@ export class CmFieldInputComponent implements ControlValueAccessor,Validator, On
     this.onTouched = fn;
   }
 
-  validate(c: AbstractControl): { [key: string]: any; } {
+  validate(c: AbstractControl): { [key: string]: any } {
     console.log('running validation');
     return this.internalControl.errors;
   }
-
 }

@@ -9,21 +9,9 @@ import { MatToolbarModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [
-    EffectsModule.forFeature([CoreEffects]),
-    CommonModule,
-    MatToolbarModule,
-    RouterModule
-  ],
-  declarations: [
-    AppBarComponent,
-    AppBarComponentComponent
-  ],
-  providers: [
-    UserService
-  ],
-  exports: [
-    AppBarComponent
-  ]
+  imports: [EffectsModule.forFeature([CoreEffects]), CommonModule, MatToolbarModule, RouterModule],
+  declarations: [AppBarComponent, AppBarComponentComponent],
+  providers: [UserService],
+  exports: [AppBarComponent]
 })
 export class CoreModule {}

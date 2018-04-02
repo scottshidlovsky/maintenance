@@ -1,12 +1,14 @@
 import { Component, Input, OnDestroy, OnInit, forwardRef } from '@angular/core';
 import {
-  AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR,
+  AbstractControl,
+  ControlValueAccessor,
+  FormControl,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
   Validator
 } from '@angular/forms';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { takeUntil } from "rxjs/operators";
-
-
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'cm-input',
@@ -16,17 +18,16 @@ import { takeUntil } from "rxjs/operators";
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CmInputComponent),
-      multi: true,
+      multi: true
     },
     {
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => CmInputComponent),
-      multi: true,
+      multi: true
     }
   ]
 })
 export class CmInputComponent implements ControlValueAccessor, OnDestroy, Validator {
-
   _minLength: number = 5;
   @Input()
   set cmMinLength(min) {
@@ -42,9 +43,7 @@ export class CmInputComponent implements ControlValueAccessor, OnDestroy, Valida
   destroyed$ = new ReplaySubject<boolean>(1);
 
   constructor() {
-    this.internalControl.valueChanges.pipe(
-      takeUntil(this.destroyed$)
-    ).subscribe((value) => {
+    this.internalControl.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(value => {
       this.onChange(value);
     });
   }
@@ -58,7 +57,7 @@ export class CmInputComponent implements ControlValueAccessor, OnDestroy, Valida
     this.internalControl.setValue(value);
   }
 
-  onChange = (val) => {};
+  onChange = val => {};
   onTouched = () => {};
 
   registerOnChange(fn: any): void {
@@ -70,7 +69,7 @@ export class CmInputComponent implements ControlValueAccessor, OnDestroy, Valida
   }
 
   validatorChanged = () => {};
-  validate(c: AbstractControl): { [key: string]: any; } {
+  validate(c: AbstractControl): { [key: string]: any } {
     console.log('running internal validation');
     if (!c.value) {
       return { minLength: true };

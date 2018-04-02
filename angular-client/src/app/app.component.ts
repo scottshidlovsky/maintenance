@@ -16,10 +16,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AppComponent implements OnInit {
   title = 'cm';
   form: FormGroup;
-  constructor(private route: ActivatedRoute, private http: HttpClient, private store: Store<AuthState>, fb: FormBuilder) {
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private store: Store<AuthState>,
+    fb: FormBuilder
+  ) {
     this.form = fb.group({
       test: []
-    })
+    });
   }
 
   submit() {}

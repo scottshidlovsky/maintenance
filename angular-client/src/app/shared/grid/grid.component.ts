@@ -12,7 +12,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'cm-row',
-  template: `<ng-content></ng-content>`,
+  template: `<ng-content></ng-content>`
 })
 export class RowComponent {
   @HostBinding('class') className: string = 'row';
@@ -23,7 +23,7 @@ export class RowComponent {
 
 @Component({
   selector: 'cm-container',
-  template: `<ng-content></ng-content>`,
+  template: `<ng-content></ng-content>`
 })
 export class ContainerComponent {
   @HostBinding('class') className: string = 'container';
@@ -36,7 +36,7 @@ const colSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
 
 @Component({
   selector: 'cm-col',
-  template: `<ng-content></ng-content>`,
+  template: `<ng-content></ng-content>`
 })
 export class ColComponent implements OnInit {
   @Input() xs: col;

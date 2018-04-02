@@ -37,9 +37,9 @@ export class AddVehicleStepperComponent implements OnDestroy {
   constructor(fb: FormBuilder) {
     this.form = fb.group({
       make: [null],
-      model: [null,],
-      year: [null,],
-      displayName: [null,]
+      model: [null],
+      year: [null],
+      displayName: [null]
     });
   }
 
