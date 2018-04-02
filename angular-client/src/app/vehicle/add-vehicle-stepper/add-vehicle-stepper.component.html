@@ -1,0 +1,77 @@
+<form [formGroup]="form">
+  <mat-horizontal-stepper [linear]="true" >
+    <mat-step [stepControl]="form.get('make')">
+      <ng-template matStepLabel>
+        {{form.get('make').value ? form.get('make').value : 'Make'}}
+      </ng-template>
+      <cm-row>
+        <cm-col xs="12">
+          <mat-form-field style="width: 100%;" floatPlaceholder="always">
+            <mat-select required formControlName="make" placeholder="Vehicle Make" (ngModelChange)="make.emit($event)">
+              <mat-option *ngFor="let m of makeOptions" [value]="m">{{m}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </cm-col>
+      </cm-row>
+      <div style="display: flex; justify-content: flex-end;">
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="form.get('model')">
+      <ng-template matStepLabel>
+        {{form.get('model').value ? form.get('model').value : 'Model'}}
+      </ng-template>
+      <cm-row>
+        <cm-col xs="12">
+          <mat-form-field style="width: 100%;" floatPlaceholder="always">
+            <mat-select required formControlName="model" placeholder="Vehicle Model" (ngModelChange)="model.emit($event)">
+              <mat-option *ngFor="let m of modelOptions" [value]="m">
+                {{m}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </cm-col>
+      </cm-row>
+      <div style="display: flex; justify-content: flex-end;">
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="form.get('year')">
+      <ng-template matStepLabel>
+        {{form.get('year').value ? form.get('year').value : 'Year'}}
+      </ng-template>
+      <cm-row>
+        <cm-col xs="12">
+          <mat-form-field style="width: 100%;" floatPlaceholder="always">
+            <mat-select required formControlName="year" placeholder="Model Year">
+              <mat-option *ngFor="let m of yearOptions" [value]="m">
+                {{m}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </cm-col>
+      </cm-row>
+      <div style="display: flex; justify-content: flex-end;">
+        <button mat-button matStepperNext>Next</button>
+      </div>
+
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>
+        Overview
+      </ng-template>
+      <mat-form-field floatPlaceholder="always">
+        <input type="text" required matInput placeholder="Display Name" />
+      </mat-form-field>
+      <div>{{form.get('year').value}} {{form.get('make').value}} {{form.get('model').value}}</div>
+      <div style="display: flex; justify-content: flex-end;">
+        <button mat-button matStepperNext>Complete</button>
+      </div>
+
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</form>

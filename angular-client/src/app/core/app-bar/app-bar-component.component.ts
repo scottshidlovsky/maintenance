@@ -1,8 +1,8 @@
-import {Component, Input} from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'cm-app-bar-component',
-    template: `
+  selector: 'cm-app-bar-component',
+  template: `
       <mat-toolbar color="primary">
         <div class="nav-bar">
           <span>Car Maintenance</span>
@@ -11,15 +11,12 @@ import {Component, Input} from "@angular/core";
         </div>
       </mat-toolbar>
     `,
-    styleUrls: ['./app-bar.component.scss']
+  styleUrls: ['./app-bar-component.component.scss']
 })
-export class AppBarComponent {
-    @Input()
-    email: string;
+export class AppBarComponentComponent {
+  @Input() email: string;
 
-    @Input()
-    authenticated: boolean;
+  @Input() authenticated: boolean;
 
-    @Input()
-    profileUrl: string;
+  @Input() profileUrl: string;
 }
