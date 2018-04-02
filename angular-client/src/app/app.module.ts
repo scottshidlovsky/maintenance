@@ -13,13 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { GridModule } from './shared/grid/grid.module';
-import { VehicleModule } from './vehicle/vehicle.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CmInputComponent } from './form/cm-input/cm-input.component';
-import { CmFieldInputComponent } from './form/cm-field-input/cm-field-input.component';
-import { FormFieldComponent } from './form/form-field/form-field.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormFieldControlDirective } from './form/form-field/form-field-control.directive';
 import { routes } from './app.routes';
 import { UserService } from './core/user.service';
 import { CoreEffects } from './core/+state/core.effects';
@@ -27,15 +22,7 @@ import { AppBarComponentComponent } from './core/app-bar/app-bar-component.compo
 import { AppBarComponent } from './core/app-bar/app-bar.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AppBarComponentComponent,
-    AppBarComponent,
-    CmInputComponent,
-    CmFieldInputComponent,
-    FormFieldComponent,
-    FormFieldControlDirective
-  ],
+  declarations: [AppComponent, AppBarComponentComponent, AppBarComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

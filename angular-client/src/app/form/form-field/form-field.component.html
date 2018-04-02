@@ -1,8 +1,0 @@
-<label><ng-container *ngIf="required">*</ng-container>{{label}}</label>
-<ng-content></ng-content>
-<ng-container *ngIf="control.errorState">
-  In error state
-  <ng-container *ngFor="let e of errorMessages">
-    <div *ngIf="control.ngControl.hasError(e.key)">{{e.message}}</div>
-  </ng-container>
-</ng-container>
