@@ -39,7 +39,10 @@ import { AppBarComponent } from './core/app-bar/app-bar.component';
 
     StoreRouterConnectingModule,
     EffectsModule.forRoot([CoreEffects]),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    StoreDevtoolsModule.instrument({
+      name: 'Dev Tools',
+      logOnly: environment.production
+    })
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
