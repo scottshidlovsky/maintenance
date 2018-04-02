@@ -1,35 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { map, filter } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { filter } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { State as AuthState } from './auth/+state/auth.reducer';
 import { Login } from './auth/+state/auth.actions';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'cm-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'cm';
-  form: FormGroup;
-  constructor(
-    private route: ActivatedRoute,
-    private http: HttpClient,
-    private store: Store<AuthState>,
-    fb: FormBuilder
-  ) {
-    this.form = fb.group({
-      test: []
-    });
-  }
-
-  submit() {}
-
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private store: Store<AuthState>) {
     this.route.queryParams
       .pipe(
         filter((params: Params) => {
