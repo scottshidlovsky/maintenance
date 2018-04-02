@@ -34,7 +34,7 @@ import { AppBarComponent } from './core/app-bar/app-bar.component';
     CmInputComponent,
     CmFieldInputComponent,
     FormFieldComponent,
-    FormFieldControlDirective
+    FormFieldControlDirective,
   ],
   imports: [
     BrowserModule,

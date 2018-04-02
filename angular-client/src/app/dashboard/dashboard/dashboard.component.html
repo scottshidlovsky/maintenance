@@ -5,10 +5,7 @@
       <cm-new-user-vehicle-card (click)="addUserVehicle()"></cm-new-user-vehicle-card>
     </cm-col>
     <cm-col xs="4">
-      <cm-user-vehicle-card>
-        <cm-user-vehicle-card-name>Scott's Car</cm-user-vehicle-card-name>
-        <cm-user-vehicle-card-details>2017 Honda Civic</cm-user-vehicle-card-details>
-        <cm-user-vehicle-card-mileage>100,562 Miles</cm-user-vehicle-card-mileage>
+      <cm-user-vehicle-card [name]="'Scott\'s Car'" [details]="'2017 Honda Civic'" [mileage]="100562">
       </cm-user-vehicle-card>
     </cm-col>
   </cm-row>

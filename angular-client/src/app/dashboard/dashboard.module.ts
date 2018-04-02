@@ -4,11 +4,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GridModule } from '../shared/grid/grid.module';
 import {
   UserVehicleCardComponent,
-  UserVehicleCardNameComponent,
-  UserVehicleCardDetailsComponent,
-  UserVehicleCardMileageComponent
 } from './user-vehicle-card/user-vehicle-card.component';
 import { NewUserVehicleCardComponent } from './new-user-vehicle-card/new-user-vehicle-card.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -17,14 +15,12 @@ import { NewUserVehicleCardComponent } from './new-user-vehicle-card/new-user-ve
     GridModule,
     MatButtonModule,
     MatIconModule,
+    CommonModule,
   ],
   exports: [DashboardComponent],
   declarations: [
     DashboardComponent,
     UserVehicleCardComponent,
-    UserVehicleCardNameComponent,
-    UserVehicleCardDetailsComponent,
-    UserVehicleCardMileageComponent,
     NewUserVehicleCardComponent
   ]
 })
