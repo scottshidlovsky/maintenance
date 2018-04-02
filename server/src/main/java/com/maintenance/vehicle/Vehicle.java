@@ -21,7 +21,7 @@ public class Vehicle extends AbstractEntity {
     String model;
 
     @Column(name = "year")
-    int year;
+    short year;
 
     public String getMake() {
         return make;
@@ -31,7 +31,7 @@ public class Vehicle extends AbstractEntity {
         return model;
     }
 
-    public int getYear() {
+    public short getYear() {
         return year;
     }
 }
