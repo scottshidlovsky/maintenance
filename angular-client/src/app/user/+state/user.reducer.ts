@@ -1,4 +1,4 @@
-import * as actions from './auth.actions';
+import { UserActions, UserActionTypes } from './user.actions';
 
 export interface State {
   email: string;
@@ -12,9 +12,10 @@ const initialState: State = {
   profileUrl: null
 };
 
-export function userReducer(state = initialState, action: actions.All): State {
+// TODO(scottshidlovsky) userReducer in auth feature? should either call feature user or rename this
+export function userReducer(state = initialState, action: UserActions): State {
   switch (action.type) {
-    case actions.LOGIN_SUCCESS: {
+    case UserActionTypes.LoginSuccess: {
       return {
         email: action.payload.email,
         authenticated: true,

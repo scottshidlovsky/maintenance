@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { State as AuthState } from './auth/+state/auth.reducer';
-import { Login } from './auth/+state/auth.actions';
+import { State as UserState } from './user/+state/user.reducer';
+import { Login } from './user/+state/user.actions';
 
 @Component({
   selector: 'cm-root',
@@ -12,7 +12,7 @@ import { Login } from './auth/+state/auth.actions';
 })
 export class AppComponent {
   title = 'cm';
-  constructor(private route: ActivatedRoute, private store: Store<AuthState>) {
+  constructor(private route: ActivatedRoute, private store: Store<UserState>) {
     this.route.queryParams
       .pipe(
         filter((params: Params) => {

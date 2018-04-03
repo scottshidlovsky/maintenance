@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FacebookBtnComponent } from './facebook-btn/facebook-btn.component';
 import { StoreModule } from '@ngrx/store';
-import { userReducer, State as AuthState } from './+state/auth.reducer';
+import { userReducer, State as UserState } from './+state/user.reducer';
 import { LoginComponent } from './login/login.component';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './+state/user.effects';
+import { UserService } from './user.service';
 
 export interface State {
-  user: AuthState;
+  user: UserState;
 }
 
 const reducers = {
@@ -14,8 +17,9 @@ const reducers = {
 };
 
 @NgModule({
-  imports: [StoreModule.forFeature('auth', reducers)],
+  imports: [StoreModule.forFeature('auth', reducers), EffectsModule.forFeature([UserEffects])],
   declarations: [LoginComponent, FacebookBtnComponent],
-  exports: [LoginComponent]
+  exports: [LoginComponent],
+  providers: [UserService]
 })
 export class AuthModule {}

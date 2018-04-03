@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import * as auth from '../../auth/index';
+import * as auth from '../../user/index';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { selectUser } from '../../auth/+state/auth.selectors';
+import { selectUser } from '../../user';
 
 @Component({
   selector: 'cm-app-bar',
