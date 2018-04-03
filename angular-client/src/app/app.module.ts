@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MatToolbarModule, MatButtonModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { AuthModule } from './user/auth.module';
+import { UserModule } from './user/user.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -34,7 +34,7 @@ import { AppBarComponent } from './core/app-bar/app-bar.component';
 
     DashboardModule,
     GridModule,
-    AuthModule,
+    UserModule,
 
     StoreRouterConnectingModule,
     EffectsModule.forRoot([]),

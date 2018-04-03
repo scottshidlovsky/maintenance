@@ -12,7 +12,6 @@ const initialState: State = {
   profileUrl: null
 };
 
-// TODO(scottshidlovsky) userReducer in auth feature? should either call feature user or rename this
 export function userReducer(state = initialState, action: UserActions): State {
   switch (action.type) {
     case UserActionTypes.LoginSuccess: {

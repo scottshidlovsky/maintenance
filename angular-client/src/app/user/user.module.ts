@@ -17,9 +17,9 @@ const reducers = {
 };
 
 @NgModule({
-  imports: [StoreModule.forFeature('auth', reducers), EffectsModule.forFeature([UserEffects])],
+  imports: [StoreModule.forFeature('user', reducers), EffectsModule.forFeature([UserEffects])],
   declarations: [LoginComponent, FacebookBtnComponent],
   exports: [LoginComponent],
   providers: [UserService]
 })
-export class AuthModule {}
+export class UserModule {}
