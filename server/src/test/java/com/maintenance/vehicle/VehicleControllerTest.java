@@ -42,7 +42,7 @@ public class VehicleControllerTest {
         when(this.vehicleRepo.findAllVehicleMakes())
                 .thenReturn(Arrays.asList("Honda", "BMW"));
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/vehicle/"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/make"))
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("@").isArray())
@@ -58,7 +58,7 @@ public class VehicleControllerTest {
     public void findAllVehicleModelByMake() throws Exception {
         when(this.vehicleRepo.findAllModelsByMake("honda")).thenReturn(Arrays.asList("Civic", "Accord"));
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/vehicle/honda"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/make/honda"))
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("@").isArray())
@@ -74,7 +74,7 @@ public class VehicleControllerTest {
     public void findAllVehicleMakesEmpty() throws Exception {
         when(this.vehicleRepo.findAllModelsByMake("honda")).thenReturn(Arrays.asList());
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/vehicle/honda"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/vehicles/make/honda"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
@@ -84,9 +84,9 @@ public class VehicleControllerTest {
     @Test
     @WithMockUser
     public void findAllVehicleYearsByMakeModel() throws Exception {
-        when(this.vehicleRepo.findAllYearByMakeAndModel("honda", "civic")).thenReturn(Arrays.asList(2016, 2018));
+        when(this.vehicleRepo.findAllYearByMakeAndModel("honda", "civic")).thenReturn(Arrays.asList((short)2016, (short)2018));
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/vehicle/honda/civic"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/make/honda/model/civic"))
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("@").isArray())
@@ -102,7 +102,7 @@ public class VehicleControllerTest {
     public void findAllVehicleYearsByMakeModelEmpty() throws Exception {
         when(this.vehicleRepo.findAllYearByMakeAndModel("honda", "civic")).thenReturn(Collections.emptyList());
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/vehicle/honda/civic"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/make/honda/model/civic"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
@@ -113,11 +113,11 @@ public class VehicleControllerTest {
     @WithMockUser
     public void findVehicleByMakeModelYear() throws Exception {
 
-        Vehicle vehicleMock = VehicleTestUtils.getMockVehicle(1, "honda", "civic", 2018);
+        Vehicle vehicleMock = VehicleTestUtils.getMockVehicle(1, "honda", "civic", (short)2018);
         Optional<Vehicle> vehicle = Optional.of(vehicleMock);
-        when(this.vehicleRepo.findVehicle("honda", "civic", 2018)).thenReturn(vehicle);
+        when(this.vehicleRepo.findVehicle("honda", "civic", (short)2018)).thenReturn(vehicle);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/vehicle/honda/civic/2018"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/make/honda/model/civic/year/2018"))
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
@@ -132,9 +132,9 @@ public class VehicleControllerTest {
     @Test
     @WithMockUser
     public void findVehicleEmpty() throws Exception {
-        when(this.vehicleRepo.findVehicle("honda", "civic", 2018)).thenReturn(Optional.empty());
+        when(this.vehicleRepo.findVehicle("honda", "civic", (short)2018)).thenReturn(Optional.empty());
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/vehicle/honda/civic/2018"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/make/honda/model/civic/2018"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 

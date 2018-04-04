@@ -10,7 +10,7 @@ public class VehicleTestUtils {
      * Utility for creating a mock vehicle. Since vehicle is immutable we don't put setters on it. Instead of adding
      * setters just for unit test we use hacky reflection
      */
-    public static Vehicle getMockVehicle(int id, String make, String model, int year) throws Exception {
+    public static Vehicle getMockVehicle(int id, String make, String model, short year) throws Exception {
         Vehicle vehicleMock = new Vehicle();
         Field idField = Vehicle.class.getSuperclass().getDeclaredField("id");
         idField.setAccessible(true);

@@ -19,6 +19,11 @@ public interface VehicleRepo extends Repository<Vehicle, Integer> {
     List<String> findAllVehicleMakes();
 
     /**
+     * @return all vehicles in system
+     */
+    List<Vehicle> findAll();
+
+    /**
      * Retrieve all models for a particular vehicle make
      * @param make String value of the vehicle make
      * @return String value of all models of a vehicle make
@@ -33,14 +38,14 @@ public interface VehicleRepo extends Repository<Vehicle, Integer> {
      * @return List of years the make and model vehicle has
      */
     @Query(value = "select distinct v.year from Vehicle v where v.make = :make and v.model = :model")
-    List<Integer> findAllYearByMakeAndModel(@Param("make") String make, @Param("model") String model);
+    List<Short> findAllYearByMakeAndModel(@Param("make") String make, @Param("model") String model);
 
     /**
      * Retrieve full vehicle object based on its make, model, year
      * @return vehicle if found otherwise empty optional
      */
     @Query(value = "select v from Vehicle v where v.make = :make and v.model = :model and v.year = :year")
-    Optional<Vehicle> findVehicle(@Param("make") String make, @Param("model") String model, @Param("year") int year);
+    Optional<Vehicle> findVehicle(@Param("make") String make, @Param("model") String model, @Param("year") short year);
 
     /**
      * Retrieve vehicle based on internal id

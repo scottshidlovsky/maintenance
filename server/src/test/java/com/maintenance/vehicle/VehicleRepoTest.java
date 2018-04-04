@@ -60,9 +60,9 @@ public class VehicleRepoTest {
      */
     @Test
     public void testFindAllYearByMakeAndModel() {
-        List<Integer> years = this.repository.findAllYearByMakeAndModel("Honda", "Civic");
+        List<Short> years = this.repository.findAllYearByMakeAndModel("Honda", "Civic");
         assertEquals(years.size(), 2);
-        assertTrue(years.containsAll(Arrays.asList(2018, 2016)));
+        assertTrue(years.containsAll(Arrays.asList((short)2018, (short)2016)));
     }
 
     /**
@@ -70,7 +70,7 @@ public class VehicleRepoTest {
      */
     @Test
     public void testFindAllYearByMakeAndModelEmpty() {
-        List<Integer> years = this.repository.findAllYearByMakeAndModel("Invalid", "Civic");
+        List<Short> years = this.repository.findAllYearByMakeAndModel("Invalid", "Civic");
         assertEquals(years.size(), 0);
 
         years = this.repository.findAllYearByMakeAndModel("Honda", "Invalid");
@@ -82,7 +82,7 @@ public class VehicleRepoTest {
      */
     @Test
     public void testFindVehicle() {
-        Optional<Vehicle> vehicle =  this.repository.findVehicle("Honda", "Civic", 2018);
+        Optional<Vehicle> vehicle =  this.repository.findVehicle("Honda", "Civic", (short)2018);
         assertTrue(vehicle.isPresent());
         Vehicle actual = vehicle.get();
         assertEquals(actual.getId(), new Integer(1));
@@ -96,8 +96,17 @@ public class VehicleRepoTest {
      */
     @Test
     public void testFindVehicleEmpty() {
-        Optional<Vehicle> vehicle = this.repository.findVehicle("Invalid", "Civic", 2019);
+        Optional<Vehicle> vehicle = this.repository.findVehicle("Invalid", "Civic", (short)2019);
         assertFalse(vehicle.isPresent());
+    }
+
+    /**
+     * Verify all vehicles are returned
+     */
+    @Test
+    public void testFindAll() {
+        List<Vehicle> vehicles = this.repository.findAll();
+        assertEquals(vehicles.size(), 7);
     }
 
 }
