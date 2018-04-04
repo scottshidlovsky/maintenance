@@ -7,19 +7,19 @@ export class VehicleService {
   constructor(private http: HttpClient) {}
 
   retrieveVehicleMakes(): Observable<string[]> {
-    return this.http.get<string[]>('/api/vehicle', {
+    return this.http.get<string[]>('/api/vehicles/make', {
       withCredentials: true
     });
   }
 
   retrieveVehicleModels(make: string): Observable<string[]> {
-    return this.http.get<string[]>(`/api/vehicle/make/${make}`, {
+    return this.http.get<string[]>(`/api/vehicles/make/${make}`, {
       withCredentials: true
     });
   }
 
   retrieveVehicleYearsByMakeAndModel(make: string, model: string): Observable<number[]> {
-    return this.http.get<number[]>(`/api/vehicle/make/${make}/model/${model}`, {
+    return this.http.get<number[]>(`/api/vehicles/make/${make}/model/${model}`, {
       withCredentials: true
     });
   }
