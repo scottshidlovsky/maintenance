@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
       <a class="anchor-btn" href="/login">
         <span class="login-page__facebook-container">
           <span class="login-page__facebook-img-container">
-            <img class="login_page__facebook-img" 
+            <img class="login_page__facebook-img"
                  alt="facebook logo"
                  src="/assets/fb-logo.png" />
           </span>
