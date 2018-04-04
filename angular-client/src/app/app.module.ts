@@ -14,11 +14,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { GridModule } from './shared/grid/grid.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app.routes';
 import { UserService } from './user/user.service';
 import { AppBarComponentComponent } from './core/app-bar/app-bar-component.component';
 import { AppBarComponent } from './core/app-bar/app-bar.component';
+import { FormModule } from './form/form.module';
 
 @NgModule({
   declarations: [AppComponent, AppBarComponentComponent, AppBarComponent],
@@ -35,6 +36,7 @@ import { AppBarComponent } from './core/app-bar/app-bar.component';
     DashboardModule,
     GridModule,
     UserModule,
+    FormModule,
 
     StoreRouterConnectingModule,
     EffectsModule.forRoot([]),

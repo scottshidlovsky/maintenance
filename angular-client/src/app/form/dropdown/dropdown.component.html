@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-select [required]="required"
+              placeholder="Favorite food"
+              [formControl]="_internalControl"
+              (openedChange)="onTouched()">
+    <mat-option *ngFor="let option of options" [value]="option.value">
+      <ng-container *ngTemplateOutlet="option.templateRef">
+      </ng-container>
+    </mat-option>
+  </mat-select>
+</mat-form-field>
