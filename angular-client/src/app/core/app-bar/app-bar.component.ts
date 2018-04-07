@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import * as auth from '../../user/index';
-import { Store } from '@ngrx/store';
+import * as user from '../../user/index';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { selectUser } from '../../user';
+import { selectUserFeature } from '../../user';
 
 @Component({
   selector: 'cm-app-bar',
@@ -16,7 +16,7 @@ import { selectUser } from '../../user';
 export class AppBarComponent {
   user$: Observable<{ email: string; profileUrl: string; authenticated: boolean }>;
 
-  constructor(store: Store<auth.State>) {
-    this.user$ = store.select(selectUser);
+  constructor(store: Store<user.State>) {
+    this.user$ = store.pipe(select(selectUserFeature));
   }
 }
