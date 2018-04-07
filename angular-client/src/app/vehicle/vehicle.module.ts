@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AddVehicleStepperComponent } from './add-vehicle-stepper/add-vehicle-stepper.component';
 import { VehicleService } from './vehicle.service';
+import { FormModule } from '../form/form.module';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { VehicleService } from './vehicle.service';
     MatFormFieldModule,
     MatInputModule,
     CommonModule,
+    FormModule,
     EffectsModule.forFeature([]),
     RouterModule.forChild([{ path: 'add', component: AddVehiclePageComponent }])
   ],

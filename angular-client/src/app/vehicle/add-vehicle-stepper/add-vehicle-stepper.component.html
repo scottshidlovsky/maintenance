@@ -63,9 +63,7 @@
       <ng-template matStepLabel>
         Overview
       </ng-template>
-      <mat-form-field floatPlaceholder="always">
-        <input type="text" required matInput placeholder="Display Name" />
-      </mat-form-field>
+      <cm-input label="Display Label" formControlName="displayName"></cm-input>
       <div>{{form.get('year').value}} {{form.get('make').value}} {{form.get('model').value}}</div>
       <div style="display: flex; justify-content: flex-end;">
         <button mat-button matStepperNext>Complete</button>
