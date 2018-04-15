@@ -8,6 +8,9 @@ export interface UserVehicle {
   make: string;
   model: string;
   year: number;
+  displayName: string;
+  currentMileage: number;
+  weeklyMileage: number;
 }
 
 @Component({
@@ -16,8 +19,6 @@ export interface UserVehicle {
   styleUrls: ['./add-vehicle-stepper.component.scss']
 })
 export class AddVehicleStepperComponent implements OnDestroy {
-  @ViewChild(MatHorizontalStepper) stepper: MatHorizontalStepper;
-
   form: FormGroup;
 
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
@@ -36,10 +37,12 @@ export class AddVehicleStepperComponent implements OnDestroy {
 
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-      make: [null],
-      model: [null],
-      year: [null],
-      displayName: [null]
+      make: [],
+      model: [],
+      year: [],
+      displayName: [],
+      currentMileage: [],
+      weeklyMileage: []
     });
   }
 

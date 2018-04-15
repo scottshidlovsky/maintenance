@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Injector, Input, OnDestroy, OnInit, Self } from '@angular/core';
+import { AfterViewInit, Attribute, Component, Injector, Input, OnDestroy, OnInit, Self } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AbstractControl,
@@ -16,7 +16,6 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { takeUntil } from 'rxjs/operators';
 import { ErrorStateMatcher } from '@angular/material';
 import { CmErrorStateMatcher } from '../error-state-matcher';
-import { InjectFlags } from '@angular/core/src/render3/di';
 
 /**
  * Input component that currently wraps materials form field and input components. Will allow me to replace
@@ -66,7 +65,7 @@ export class InputComponent implements ControlValueAccessor, Validator, AfterVie
 
   _errorStateMatcher: ErrorStateMatcher;
 
-  constructor(private _injector: Injector) {
+  constructor(private _injector: Injector, @Attribute('type') public type = 'text') {
     this._internalControl.valueChanges.pipe(takeUntil(this._destroyed$)).subscribe(value => {
       this.onChange(value);
     });

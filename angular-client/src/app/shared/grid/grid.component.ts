@@ -6,7 +6,9 @@ import {
   ViewEncapsulation,
   OnInit,
   ElementRef,
-  Renderer2
+  Renderer2,
+  SimpleChanges,
+  OnChanges
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
@@ -33,6 +35,55 @@ export class ContainerComponent {
 type Col = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12' | '';
 
 const ColSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+
+/**
+ * Add flexbox grid col classes to an element.
+ *
+ * Usage:
+ *  <cm-row>
+ *    <input cmCol cmColXs="6" cmColSm="4" cmColMd="3" cmColLg="1" />
+ *  </cm-row>
+ */
+@Directive({
+  selector: '[cmCol]'
+})
+export class ColDirective implements OnChanges {
+  @Input() cmColXs: Col = null;
+  @Input() cmColSm: Col = null;
+  @Input() cmColMd: Col = null;
+  @Input() cmColLg: Col = null;
+
+  constructor(private _renderer: Renderer2, private _el: ElementRef) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (const change of Object.keys(changes)) {
+      const { firstChange, previousValue, currentValue } = changes[change];
+      if (firstChange) {
+        this._renderer.addClass(this._el.nativeElement, `${this.getCol(change)}-${currentValue}`);
+      } else if (previousValue !== null && currentValue == null) {
+        this._renderer.removeClass(this._el.nativeElement, `${this.getCol(change)}-${previousValue}`);
+      } else if (previousValue === null && currentValue !== null) {
+        this._renderer.addClass(this._el.nativeElement, `${this.getCol(change)}-${currentValue}`);
+      } else {
+        this._renderer.removeClass(this._el.nativeElement, `${this.getCol(change)}-${previousValue}`);
+        this._renderer.addClass(this._el.nativeElement, `${this.getCol(change)}-${currentValue}`);
+      }
+    }
+  }
+
+  private getCol(propChange: string) {
+    switch (propChange) {
+      case 'cmColXs':
+        return 'col-xs';
+      case 'cmColSm':
+        return 'col-sm';
+      case 'cmColMd':
+        return 'col-md';
+      case 'cmColLg':
+        return 'col-lg';
+    }
+  }
+}
 
 @Component({
   selector: 'cm-col',

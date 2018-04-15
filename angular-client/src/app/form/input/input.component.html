@@ -1,6 +1,6 @@
-<mat-form-field floatPlaceholder="always">
-  <input type="text"
-         required="required"
+<mat-form-field style="width: 100%" floatPlaceholder="always">
+  <input [type]="type"
+         [required]="required"
          matInput
          [errorStateMatcher]="_errorStateMatcher"
          [formControl]="_internalControl"

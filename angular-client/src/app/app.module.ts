@@ -20,6 +20,7 @@ import { UserService } from './user/user.service';
 import { AppBarComponentComponent } from './core/app-bar/app-bar-component.component';
 import { AppBarComponent } from './core/app-bar/app-bar.component';
 import { FormModule } from './form/form.module';
+import { CoreModule } from './core/core.module';
 
 interface RouterStateUrl {
   url: string;
@@ -45,7 +46,7 @@ class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
 }
 
 @NgModule({
-  declarations: [AppComponent, AppBarComponentComponent, AppBarComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -60,6 +61,7 @@ class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
     GridModule,
     UserModule,
     FormModule,
+    CoreModule,
 
     StoreRouterConnectingModule,
     EffectsModule.forRoot([]),
@@ -68,8 +70,7 @@ class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
       logOnly: environment.production
     })
   ],
-  providers: [UserService,
-    { provide: RouterStateSerializer, useClass: CustomSerializer }],
+  providers: [UserService, { provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
-<cm-add-vehicle-stepper (make)="makeChange.next($event)"
-                        [modelOptions]="modelOptions | async"
-                        (model)="modelChange.next($event)"
-                        [makeOptions]="makeOptions | async"
-                        [yearOptions]="yearOptions | async"></cm-add-vehicle-stepper>
+<cm-add-vehicle-stepper (make)="makeChange$.next($event)"
+                        [modelOptions]="modelOptions$ | async"
+                        (model)="modelChange$.next($event)"
+                        [makeOptions]="makeOptions$ | async"
+                        [yearOptions]="yearOptions$ | async"></cm-add-vehicle-stepper>

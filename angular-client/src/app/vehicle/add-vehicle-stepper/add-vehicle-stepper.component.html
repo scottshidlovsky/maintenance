@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="submit.emit(form.value)">
   <mat-horizontal-stepper [linear]="true" >
     <mat-step [stepControl]="form.get('make')">
       <ng-template matStepLabel>
@@ -14,7 +14,7 @@
         </cm-col>
       </cm-row>
       <div style="display: flex; justify-content: flex-end;">
-        <button mat-button matStepperNext>Next</button>
+        <button type="button" mat-button matStepperNext>Next</button>
       </div>
     </mat-step>
 
@@ -34,7 +34,7 @@
         </cm-col>
       </cm-row>
       <div style="display: flex; justify-content: flex-end;">
-        <button mat-button matStepperNext>Next</button>
+        <button type="button" mat-button matStepperNext>Next</button>
       </div>
     </mat-step>
 
@@ -54,7 +54,7 @@
         </cm-col>
       </cm-row>
       <div style="display: flex; justify-content: flex-end;">
-        <button mat-button matStepperNext>Next</button>
+        <button type="button" mat-button matStepperNext>Next</button>
       </div>
 
     </mat-step>
@@ -63,7 +63,33 @@
       <ng-template matStepLabel>
         Overview
       </ng-template>
-      <cm-input label="Display Label" formControlName="displayName"></cm-input>
+      <cm-row>
+        <cm-input cmCol
+                  required
+                  cmColXs="12"
+                  label="Display Label"
+                  formControlName="displayName">
+        </cm-input>
+      </cm-row>
+      <cm-row>
+        <cm-input required
+                  type="number"
+                  cmCol
+                  cmColXs="12"
+                  label="Current Mileage"
+                  formControlName="currentMileage">
+        </cm-input>
+      </cm-row>
+      <cm-row>
+        <cm-input type="number"
+                  required
+                  cmCol
+                  cmColXs="12"
+                  label="Average Weekly Mileage"
+                  formControlName="weeklyMileage">
+        </cm-input>
+      </cm-row>
+
       <div>{{form.get('year').value}} {{form.get('make').value}} {{form.get('model').value}}</div>
       <div style="display: flex; justify-content: flex-end;">
         <button mat-button matStepperNext>Complete</button>

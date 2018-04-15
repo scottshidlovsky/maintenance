@@ -7,7 +7,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './+state/user.effects';
 import { UserService } from './user.service';
 
-
 @NgModule({
   imports: [StoreModule.forFeature('user', userReducer), EffectsModule.forFeature([UserEffects])],
   declarations: [LoginComponent, FacebookBtnComponent],
